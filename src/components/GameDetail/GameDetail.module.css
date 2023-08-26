@@ -1,0 +1,30 @@
+.list{
+  display: inline-flex;
+  flex-direction: column;
+  list-style-type: none;
+  line-height: normal;
+  gap: 15px;
+  width: 365px;
+  padding: 0;
+}
+.list > li{
+  text-align: left;
+}
+.list > li > h2{
+  text-align: center;
+  font-size: 30px;
+}
+.list > li > h3{
+  border-bottom: 1px solid #4799eb;
+  padding-bottom: 10px;
+}
+.list > li > p{
+  text-indent: 10px;
+}
+.list2{
+  list-style-type: none;
+  padding: 0;
+}
+.span{
+  color: white;
+}

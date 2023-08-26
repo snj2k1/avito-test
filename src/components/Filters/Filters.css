@@ -1,0 +1,13 @@
+.ant-select-selector{
+  background-color: rgb(39, 43, 48) !important;
+  border-color: #4096ff !important;
+}
+.ant-select-selection-item{
+  color: white !important;
+}
+.ant-select-arrow{
+  color: #4096ff !important;
+}
+.ant-select-selection-search-input{
+  background-color: rgb(39, 43, 48) !important;
+}

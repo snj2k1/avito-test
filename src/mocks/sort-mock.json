@@ -1,0 +1,18 @@
+[
+  {
+    "value": "relevance",
+    "label": "Relevance"
+  },
+  {
+    "value": "release-date",
+    "label": "Release Date"
+  },
+  {
+    "value": "popularity",
+    "label": "Popularity"
+  },
+  {
+    "value": "alphabetical",
+    "label": "Alphabetical"
+  }
+]

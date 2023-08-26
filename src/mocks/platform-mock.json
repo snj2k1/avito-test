@@ -1,0 +1,14 @@
+[
+  {
+    "value": "all",
+    "label": "All Platforms"
+  },
+  {
+    "value": "pc",
+    "label": "Windows (PC)"
+  },
+  {
+    "value": "browser",
+    "label": "Browser (Web)"
+  }
+]

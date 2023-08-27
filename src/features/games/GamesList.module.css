@@ -11,3 +11,11 @@
 .link{
   color: rgb(170, 170, 170);
 }
+
+@media screen and (max-width: 768px){
+  .list{
+    margin-top: 50px;
+    width: 90%;
+    max-width: none;
+  }
+}

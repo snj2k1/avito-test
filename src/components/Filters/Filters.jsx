@@ -34,34 +34,40 @@ const Filters = () => {
   };
 
   return (
-    <Space wrap>
-      <span>Platform: </span>
-      <Select
-        defaultValue={platform}
-        style={{
-          width: 150,
-        }}
-        onChange={handlePlatform}
-        options={platformMock}
-      />
-      <span>Genre: </span>
-      <Select
-        defaultValue={category}
-        style={{
-          width: 150,
-        }}
-        onChange={handleCategory}
-        options={categoryMock}
-      />
-      <span>Sort By: </span>
-      <Select
-        defaultValue={sortBy}
-        style={{
-          width: 150,
-        }}
-        onChange={handleSort}
-        options={sortMock}
-      />
+    <Space wrap className="Filters__wrapper">
+      <div className="Filters__element">
+        <span>Platform: </span>
+        <Select
+          defaultValue={platform}
+          style={{
+            width: 150,
+          }}
+          onChange={handlePlatform}
+          options={platformMock}
+        />
+      </div>
+      <div className="Filters__element">
+        <span>Genre: </span>
+        <Select
+          defaultValue={category}
+          style={{
+            width: 150,
+          }}
+          onChange={handleCategory}
+          options={categoryMock}
+        />
+      </div>
+      <div className="Filters__element">
+        <span>Sort By: </span>
+        <Select
+          defaultValue={sortBy}
+          style={{
+            width: 150,
+          }}
+          onChange={handleSort}
+          options={sortMock}
+        />
+      </div>
     </Space>
   );
 };

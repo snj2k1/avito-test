@@ -20,6 +20,7 @@ const contentStyle = {
   color: "#aaa",
   backgroundColor: "#272b30",
   paddingBottom: "60px",
+  position: "relative",
 };
 const footerStyle = {
   textAlign: "center",

@@ -32,3 +32,15 @@
   background-color: rgb(170, 170, 170, .4);
   transition: all .5s ease-in;
 }
+
+@media screen and (max-width: 768px){
+  .item{
+    flex-direction: column;
+  }
+  .img{
+    max-height: none;
+  }
+  .info{
+    gap: 10px;
+  }
+}

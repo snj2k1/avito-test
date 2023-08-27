@@ -28,3 +28,12 @@
 .span{
   color: white;
 }
+
+@media screen and (max-width: 768px){
+  .list{
+    width: 80%;
+  }
+  .list > li > h2{
+    font-size: 24px;
+  }
+}

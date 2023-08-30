@@ -1,12 +1,12 @@
 import axios from "axios";
-import { GAME_OPTIONS } from "../../config";
-import { useEffect, useState } from "react";
+import { GAME_OPTIONS, GAME_URL } from "../../config";
 import { useCookies } from "react-cookie";
 import { Link, useParams } from "react-router-dom";
 import { LeftOutlined, LoadingOutlined } from "@ant-design/icons";
 import { Spin } from "antd";
 import { GameDetail } from "../../components/GameDetail/GameDetail";
 import styles from "./Detail.module.css";
+import { useQuery } from "react-query";
 
 const antIcon = (
   <LoadingOutlined style={{ fontSize: 48, color: "white" }} spin />
@@ -15,38 +15,37 @@ const antIcon = (
 const Detail = () => {
   const { id } = useParams();
   const [cookies, setCookie] = useCookies([id]);
-  const [data, setData] = useState({});
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    setLoading(true);
-    if (cookies[id]) {
-      setData(cookies[id]);
-      setError(null);
-    } else {
-      axios
-        .request({ ...GAME_OPTIONS, params: { id } })
-        .then((data) => {
-          setData(data.data);
-          setCookie(id, data.data, {
+  const { data, isLoading, isError } = useQuery(
+    id,
+    async () => {
+      if (cookies[id]) {
+        return cookies[id];
+      }
+      const data = await axios
+        .get(GAME_URL, { ...GAME_OPTIONS, params: { id } })
+        .then((response) => {
+          setCookie(id, response.data, {
             maxAge: 300,
           });
-          setError(null);
-        })
-        .catch((e) => setError(e));
+          return response.data;
+        });
+      return data;
+    },
+    {
+      retry: 3,
+      refetchOnWindowFocus: false,
+      keepPreviousData: true,
     }
-    setLoading(false);
-  }, [id]);
+  );
 
   return (
     <>
       <Link to={"/"} className={styles.link}>
         <LeftOutlined />
       </Link>
-      {error ? (
+      {isError ? (
         <h2>Failed to load...</h2>
-      ) : loading ? (
+      ) : isLoading ? (
         <Spin
           style={{ position: "absolute", top: "50%", right: "50%" }}
           indicator={antIcon}

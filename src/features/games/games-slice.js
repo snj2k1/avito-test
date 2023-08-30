@@ -3,10 +3,13 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const loadGames = createAsyncThunk(
   "@@games/load-games",
   async (filters, { extra: { client, api } }) => {
-    return client.request({
-      ...api.GAMES_OPTIONS,
-      params: { ...filters },
-    });
+    const data = await client
+      .get(api.GAMES_URL, {
+        ...api.GAMES_OPTIONS,
+        params: { ...filters },
+      })
+      .then((response) => response.data);
+    return data;
   }
 );
 
@@ -28,7 +31,7 @@ const gamesSlice = createSlice({
       })
       .addCase(loadGames.fulfilled, (state, action) => {
         state.status = "recieved";
-        state.data = action.payload.data;
+        state.data = action.payload;
         state.error = null;
       })
       .addCase(loadGames.rejected, (state, action) => {
